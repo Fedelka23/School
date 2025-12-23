@@ -33,3 +33,10 @@ const day = currentDate.getDate().toString().padStart(2, '0');  // день
 const month = monthNamesRU[currentDate.getMonth()];             // месяц
 const year = currentDate.getFullYear();                         // год
 dayDate.textContent = `${day} ${month} ${year}`;
+
+const form = document.querySelector('form');
+form.addEventListener('submit', () => {
+  const data = new FormData(form);
+  const entries = Object.fromEntries(data.entries());
+  tg.sendData(JSON.stringify(entries));
+});
